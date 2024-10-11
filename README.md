@@ -50,8 +50,8 @@ All services communicate using RabbitMQ as the message broker.
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-repo/rss-scraper-microservices.git
-   cd rss-scraper-microservices
+   git clone https://github.com/mhmmdamiwn/digicloud-task1.git
+   cd digicloud-task1 
 
 2. **Build and Start Docker Containers**
    ```bash
