@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.12.0-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+
+  auth_service:
+    build: ./auth_service
+    command: nameko run --config config.yml service
+    depends_on:
+      - rabbitmq
+      - mysql
+    environment:
+      - DATABASE_URI=mysql+pymysql://myuser:mypassword@mysql/mydatabase
+
+  feed_service:
+    build: ./feed_service
+    command: nameko run --config config.yml service
+    depends_on:
+      - rabbitmq
+      - mysql 
+    environment:
+      - DATABASE_URI=mysql+pymysql://myuser:mypassword@mysql/mydatabase
+  
+  api_gateway:
+    build: ./api_gateway
+    command: nameko run --config config.yml service
+    depends_on:
+      - rabbitmq
+      - auth_service
+      - feed_service
+    ports:
+      - "8000:8000"

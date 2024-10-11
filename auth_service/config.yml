@@ -1,0 +1,5 @@
+AMQP_URI: "pyamqp://guest:guest@rabbitmq"
+
+DB_URIS:
+  default: "mysql+pymysql://myuser:mypassword@mysql/mydatabase"
+  auth_service:Base: "mysql+pymysql://myuser:mypassword@mysql/mydatabase"

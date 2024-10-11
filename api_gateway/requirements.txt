@@ -1,0 +1,2 @@
+nameko==2.13.0
+werkzeug==2.0.1
