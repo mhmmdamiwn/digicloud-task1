@@ -63,6 +63,8 @@ All services communicate using RabbitMQ as the message broker.
 
 ## Services Overview
 
+#### All of the endpoints will be available at localhost:8000 based on the docker-compose
+
 ### Auth Service
 - **Purpose**: Manages user registration and authentication.
 - **Endpoints**:
