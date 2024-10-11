@@ -61,7 +61,6 @@ All services communicate using RabbitMQ as the message broker.
    ```bash
    docker-compose logs -f
 
-
 ## Services Overview
 
 ### Auth Service
